@@ -1,0 +1,340 @@
+swagger: '2.0'
+info:
+  description: API REST de cadastro de usuarios.
+  version: '1.0'
+  title: Usuarios API REST
+  termsOfService: Terms of Service
+  contact:
+    name: Leonardo Borchartt
+    email: leonardo.borchartt@compasso.com.br
+  license:
+    name: Apache License Version 2.0
+    url: 'https://www.apache.org/licesen.html'
+host: 'localhost:8080'
+basePath: /
+tags:
+  - name: media-resource
+    description: Media Resource
+  - name: usuario-resource
+    description: Usuario Resource
+paths:
+  /api/medias:
+    get:
+      tags:
+        - media-resource
+      summary: Retorna uma lista de medias.
+      operationId: listaMediasUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: nome
+          in: query
+          description: nome
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Media'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - media-resource
+      summary: Salva uma media.
+      operationId: salvaMediaUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: media
+          description: media
+          required: true
+          schema:
+            $ref: '#/definitions/Media'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Media'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - media-resource
+      summary: Atualiza uma media.
+      operationId: atualizaMunicipioUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: media
+          description: media
+          required: true
+          schema:
+            $ref: '#/definitions/Media'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/medias/{id}':
+    get:
+      tags:
+        - media-resource
+      summary: Retorna uma media pela id.
+      operationId: listaMediaUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Media'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - media-resource
+      summary: Deleta uma media pelo seu id.
+      operationId: deletaMediaComIdUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /api/usuarios:
+    get:
+      tags:
+        - usuario-resource
+      summary: Retorna um usuário pelo nome.
+      operationId: listaUsuariosUsingGET_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: nome
+          in: query
+          description: nome
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Usuario'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - usuario-resource
+      summary: Salva um usuário.
+      operationId: salvaUsuarioUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: usuario
+          description: usuario
+          required: true
+          schema:
+            $ref: '#/definitions/Usuario'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Usuario'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - usuario-resource
+      summary: Atualiza um usuário.
+      operationId: atualizaUsuarioUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: usuario
+          description: usuario
+          required: true
+          schema:
+            $ref: '#/definitions/Usuario'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/usuarios/{id}':
+    get:
+      tags:
+        - usuario-resource
+      summary: Retorna um usuário pelo seu id.
+      operationId: listaUsuariosUsingGET
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Usuario'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - usuario-resource
+      summary: Deleta um usuário pelo seu id.
+      operationId: deletaUsuarioComIdUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+definitions:
+  Media:
+    type: object
+    properties:
+      autor:
+        $ref: '#/definitions/Usuario'
+      date:
+        type: string
+        format: date
+      descricao:
+        type: string
+      id:
+        type: integer
+        format: int64
+      latitude:
+        type: string
+      longitude:
+        type: string
+      nome:
+        type: string
+  Usuario:
+    type: object
+    properties:
+      dataNascimento:
+        type: string
+        format: date
+      email:
+        type: string
+      id:
+        type: integer
+        format: int64
+      idade:
+        type: integer
+        format: int32
+      nick:
+        type: string
+      nome:
+        type: string
+      sexo:
+        type: string
+      telefone:
+        type: string
