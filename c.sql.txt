@@ -1,0 +1,12 @@
+create table tb_usuario (id serial primary key, nome varchar(100), nascimento date, sexo varchar(1), idade integer, cidade varchar(50));
+
+CREATE DATABASE apirest;
+
+
+
+insert into tb_usuario (nome, sexo, idade, cidade) values
+ ('Leonardo', 'M', 26, 'Floripa SC'), 
+('Joao', 'M', 22, 'Palhoca SC'),
+('Jorge','M', 21, 'Sao Jose SC'),
+('Marcio', 'M', 46, 'Porto Alegre RS'),
+('Eduardo', 'M', 13, 'Floripa SC');
