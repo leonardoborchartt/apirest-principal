@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,20 +51,18 @@ public class UsuarioResource {
 	public Usuario listaUsuarios(@PathVariable(value = "id") long id) {
 		return usuarioRepository.findById(id);
 	}
-	
-	
-	
-	
 
 	@PostMapping("/usuarios")
 	@ApiOperation(value = "Salva um usuário.")
-	public Serializable salvaUsuario(@RequestBody @Valid Usuario usuario) {
+	public ResponseEntity<?> salvaUsuario(@RequestBody @Valid Usuario usuario) {
 		try {
-			return usuarioRepository.save(usuario);
+			usuarioRepository.save(usuario);
+			return new ResponseEntity<>(usuario, HttpStatus.CREATED);
+
 		} catch (Exception e) {
-			
-//			return e.getMessage();
-			return  HttpStatus.CONFLICT;
+
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+
 		}
 
 	}
