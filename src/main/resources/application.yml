@@ -1,11 +1,15 @@
+server:
+  port: 8080
 spring:
+  application:
+    name: 'user'
   datasource:
     password: root
-    url: jdbc:postgresql://localhost:5432/apirest
+    url: jdbc:postgresql://localhost:5432/users
     username: postgres
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     properties:
       hibernate:
         
@@ -13,9 +17,4 @@ spring:
           lob:
             non_contextual_creation: true
 
-            
-contato:
-  disco:
-    diretorio-fotos: fotos
-    raiz: /tmp/contato-disco
             

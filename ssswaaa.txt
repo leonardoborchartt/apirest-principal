@@ -35,12 +35,6 @@ paths:
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/Iterable«User»'
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
         '404':
           description: Not Found
     post:
@@ -58,7 +52,7 @@ paths:
           description: user
           required: true
           schema:
-            $ref: '#/definitions/User'
+            $ref: '#/definitions/User1'
       responses:
         '200':
           description: OK
@@ -66,8 +60,6 @@ paths:
             type: object
         '201':
           description: Created
-        '401':
-          description: Unauthorized
         '403':
           description: Forbidden
         '404':
@@ -94,8 +86,6 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/User'
-        '401':
-          description: Unauthorized
         '403':
           description: Forbidden
         '404':
@@ -129,8 +119,6 @@ paths:
             $ref: '#/definitions/User'
         '201':
           description: Created
-        '401':
-          description: Unauthorized
         '403':
           description: Forbidden
         '404':
@@ -163,45 +151,56 @@ paths:
         '403':
           description: Forbidden
 definitions:
-  Cliente:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 234
-        titular:
-          type: string
-          example: Janete Silva
-        cpf:
-          type: string
-          minLength: 11
-          maxLength: 11
-          example: 01234567890
-        senha:
-          type: string
-          format: password
-          example: senha123
-        contas:
-          type: array
-          items:
-            $ref: '#/definitions/Conta'
-  
-  User:
-   properties:
-        birthday:
+  User1:
+    type: object
+    properties:
+      name:
         type: string
-        format: date
+        example: "Leonardo Borchartt"
+      nick:
+        type: string
+        example: "leo"
       email:
         type: string
+        example: leo@compasso.com.br
+      phone:
+        type: string
+        example: (48)98877-6655
       gender:
         type: string
+        example: "M"
+      birthday:
+        type: string
+        format: date
+        example: "1993-10-09"
+  User:
+    type: object
+    properties:
       id:
         type: integer
         format: int64
+        example: "1"
       name:
         type: string
+        example: "Leonardo Borchartt"
       nick:
         type: string
+        example: "leo"
+      email:
+        type: string
+        example: leo@compasso.com.br
       phone:
         type: string
+        example: (48)98877-6655
+      gender:
+        type: string
+        example: "M"
+      birthday:
+        type: string
+        format: date
+        example: "1993-10-09"
+      age:
+        type: string
+        format: String
+        example: 26
+      
